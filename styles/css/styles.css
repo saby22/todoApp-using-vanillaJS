@@ -111,6 +111,19 @@
 .content__todos-delete {
   height: 100%;
   width: 10%;
+  position: relative;
+  right: 40px;
+  display: none;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform 20000ms ease-in;
+  transition: -webkit-transform 20000ms ease-in;
+  transition: transform 20000ms ease-in;
+  transition: transform 20000ms ease-in, -webkit-transform 20000ms ease-in;
+}
+
+.content__todos-delete div {
+  height: 100%;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -120,33 +133,32 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  position: relative;
-  right: 40px;
-  display: none;
   background: red;
 }
 
-.content__todos-delete i {
+.content__todos-delete div i {
   font-size: 1.2rem;
   color: white;
 }
 
 .content__todos-delete-mouseIn {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-transition: -webkit-transform 100ms ease-in-out;
-  transition: -webkit-transform 100ms ease-in-out;
-  transition: transform 100ms ease-in-out;
-  transition: transform 100ms ease-in-out, -webkit-transform 100ms ease-in-out;
+  display: block;
   -webkit-transform: translateX(40px);
           transform: translateX(40px);
+  -webkit-transition: -webkit-transform 100ms ease-in;
+  transition: -webkit-transform 100ms ease-in;
+  transition: transform 100ms ease-in;
+  transition: transform 100ms ease-in, -webkit-transform 100ms ease-in;
 }
 
 .content__todos-delete-mouseOut {
   display: none;
   -webkit-transform: translateX(-40px);
           transform: translateX(-40px);
+  -webkit-transition: -webkit-transform 20000ms ease-in;
+  transition: -webkit-transform 20000ms ease-in;
+  transition: transform 20000ms ease-in;
+  transition: transform 20000ms ease-in, -webkit-transform 20000ms ease-in;
 }
 
 html {

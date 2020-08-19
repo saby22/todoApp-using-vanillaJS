@@ -52,7 +52,6 @@
             font-weight: 500;
             font-family: 'Be Vietnam', sans-serif;
         }
-
     }
 
     &__add-focus{
@@ -100,32 +99,42 @@
     }
 
     &__todos-delete{
+
         height: 100%;
         width: 10%;
-        display: flex;
-        justify-content:center;
-        align-items: center;
         position: relative;
         right: 40px;
         display: none;
-        background: red;
-
-        i{
-            font-size: 1.2rem;
-            color: white;
+        div{
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content:center;
+            align-items: center;
+            background: red;
+    
+            i{
+                font-size: 1.2rem;
+                color: white;
+            }
+        
         }
-
+        cursor: pointer;
+        //transition: transform 20000ms ease-in;
     }
 
     &__todos-delete-mouseIn{
-        display: flex;
-        transition: transform 100ms ease-in-out;
+        
+        display: block;
         transform: translateX(40px);
+        transition: transform 100ms ease-in;
     }
 
     &__todos-delete-mouseOut{
+        
         display: none;
         transform: translateX(-40px);
+        transition: transform 100ms ease-in;
     }
 
 }

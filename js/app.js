@@ -5,6 +5,8 @@ const input=document.querySelector("input");
 const todoDiv=document.querySelectorAll(".content__todos");
 const todoDelete=document.querySelectorAll(".content__todos-delete");
 const todo=document.querySelectorAll(".content__todos h3");
+const todoLi=document.querySelectorAll("li");
+const todoUl=document.querySelector("ul");
 
 /*Variables*/
 let newTodo;
@@ -41,6 +43,28 @@ const classExists = (target,className)=>{
 const countTodo= ()=>{
     numberOfTodos=document.querySelectorAll(".content__todos").length;
 }
+
+//Change the color of the todos
+const colorChange= ()=>{
+    countTodo();
+    let newList=document.querySelectorAll("li .content__todos");
+    for (let i=0;i<numberOfTodos;i++){
+        if(i%2===0){
+            classRemove(newList[i],"content__todos-bgGray");
+            classAdd(newList[i],"content__todos-bgWhite");
+            // newList[i].classList.remove("content__todos-bgGray");
+            // newList[i].classList.add("content__todos-bgWhite");
+        }
+        
+        else{
+            classRemove(newList[i],"content__todos-bgWhite");
+            classAdd(newList[i],"content__todos-bgGray");
+            // newList[i].classList.remove("content__todos-bgWhite");
+            // newList[i].classList.add("content__todos-bgGray");
+        } 
+    }
+}
+
 /*---------------------------------------*/
 
 //Display or hide the Add New Todo
@@ -65,6 +89,7 @@ input.addEventListener("blur",()=>{
 //Retrieve value when ENTER key is pressed
 input.addEventListener("keyup",event=>{
 
+    //the input string should not exceed 31 characcters
     if(input.value.length>31)
     {
         document.querySelector(".fa-exclamation-triangle").style.opacity='1';
@@ -111,7 +136,7 @@ for(let i=0;i<todoDiv.length;i++)
 }
 
 //Add and remove strikethrough to the clicked todo
-for(let i=0;i<todoDiv.length;i++){
+for(let i=0;i<todo.length;i++){
 
     todo[i].addEventListener("click",()=>{
 
@@ -124,10 +149,19 @@ for(let i=0;i<todoDiv.length;i++){
             todo[i].style.textDecoration="line-through";
             todo[i].style.opacity=0.5;
         }
-        
-        
-        //addStyle(todo[i],textDecoration,"line-through");
     });
 }
+
+//Deleting todos
+for(let i=0;i<todo.length;i++){
+
+    todoDelete[i].addEventListener("click",()=>{
+        console.log("Clicked");
+        //delete the ith li
+        todoUl.removeChild(todoLi[i]);
+        colorChange();
+    });
+
+};
 
 

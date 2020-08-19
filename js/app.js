@@ -4,10 +4,12 @@ const input_div=document.querySelector(".content__add");
 const input=document.querySelector("input");
 const todoDiv=document.querySelectorAll(".content__todos");
 const todoDelete=document.querySelectorAll(".content__todos-delete");
+const todo=document.querySelectorAll(".content__todos h3");
 
 /*Variables*/
 let newTodo;
 let toggleNewTodo=true;
+let numberOfTodos;
 
 /*Functions*/
 
@@ -33,14 +35,20 @@ const classExists = (target,className)=>{
     else
     return false;
 };
+
+//count the number of Todos
+const countTodo= ()=>{
+    numberOfTodos=document.querySelectorAll(".content__todos").length;
+    console.log(numberOfTodos);
+}
 /*---------------------------------------*/
 
 //Display or hide the Add New Todo
 plusButton.addEventListener("click", ()=>{
     if(toggleNewTodo)
-    addStyle(input_div,display,"none");
+    input_div.style.display="none";
     else
-    addStyle(input_div,display,"flex");
+    input_div.style.display="flex";
     toggleNewTodo=!toggleNewTodo;
 });
 
@@ -87,5 +95,18 @@ for(let i=0;i<todoDiv.length;i++)
     });
 }
 
+//Add and remove strikethrough to the clicked todo
+for(let i=0;i<todoDiv.length;i++){
+
+    todo[i].addEventListener("click",()=>{
+
+        if(todo[i].style.textDecoration==="line-through")
+        todo[i].style.textDecoration="none";
+        else
+        todo[i].style.textDecoration="line-through";
+        
+        //addStyle(todo[i],textDecoration,"line-through");
+    });
+}
 
 

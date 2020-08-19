@@ -13,6 +13,7 @@ let newTodo;
 let toggleNewTodo=true;
 let numberOfTodos;
 let characterPermit=true;
+let newTodoElement=document.createElement("li");
 
 /*Functions*/
 
@@ -104,10 +105,27 @@ input.addEventListener("keyup",event=>{
     {
         newTodo=input.value;
         input.value=null;
-        // if(newTodo!=null)
-        // {
+        console.log(newTodo);
+        if(newTodo!="")
+        {
+            newTodoElement.innerHTML=`<div class="content__todos">
+            <div class="content__todos-delete">
+                <div>
+                    <i class="fas fa-trash-alt"></i>
+                </div>
+            </div>
+            <h3>${newTodo}</h3>
+            </div>`
+            todoUl.appendChild(newTodoElement.cloneNode(true));
+            countTodo();
+            
+            let newList=document.querySelectorAll("li .content__todos");
 
-        // }
+            if(numberOfTodos%2==0)
+            classAdd(newList[numberOfTodos-1],"content__todos-bgGray");
+            else
+            classAdd(newList[numberOfTodos-1],"content__todos-bgWhite");  
+        }
     }
     
 });

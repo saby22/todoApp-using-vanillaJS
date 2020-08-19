@@ -183,8 +183,8 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
-  background: -webkit-gradient(linear, left top, right top, from(#833ab4), color-stop(#fd1d1d), to(#fcb045));
-  background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+  background: -webkit-gradient(linear, left top, right top, from(#11998e), to(#38ef7d));
+  background: linear-gradient(to right, #11998e, #38ef7d);
   font-family: 'Be Vietnam', sans-serif;
 }
 
@@ -192,6 +192,12 @@ body {
   position: absolute;
   right: 0;
   left: 0;
-  top: 4em;
+  top: 6em;
+}
+
+.content {
+  -webkit-box-shadow: 3px 3px 17px 1px rgba(0, 0, 0, 0.4);
+          box-shadow: 3px 3px 17px 1px rgba(0, 0, 0, 0.4);
+  height: auto;
 }
 /*# sourceMappingURL=styles.css.map */

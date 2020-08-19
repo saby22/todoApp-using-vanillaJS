@@ -15,7 +15,7 @@ body{
     margin: 0;
     padding: 0;
     height: 100vh;
-    background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+    background: linear-gradient(to right, #11998e, #38ef7d);
     font-family: 'Be Vietnam', sans-serif;
 }
 
@@ -23,5 +23,10 @@ body{
     position: absolute;
     right: 0;
     left: 0;
-    top: 4em;
+    top: 6em;
+}
+
+.content{
+    box-shadow: 3px 3px 17px 1px rgba(0, 0, 0, 0.4);
+    height: auto;
 }

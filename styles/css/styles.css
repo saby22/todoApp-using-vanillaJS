@@ -47,6 +47,7 @@
       -ms-flex-pack: center;
           justify-content: center;
   border: 3px solid rgba(41, 128, 185, 0);
+  position: relative;
 }
 
 .content__add input {
@@ -58,8 +59,17 @@
   color: #2980b9;
   font-size: 1.1rem;
   padding: 0;
-  font-weight: 500;
+  font-weight: 700;
   font-family: 'Be Vietnam', sans-serif;
+}
+
+.content__add i {
+  position: absolute;
+  left: 335px;
+  top: 17.7px;
+  color: red;
+  opacity: 0;
+  font-size: 0.8rem;
 }
 
 .content__add-focus {
@@ -115,10 +125,6 @@
   right: 40px;
   display: none;
   cursor: pointer;
-  -webkit-transition: -webkit-transform 20000ms ease-in;
-  transition: -webkit-transform 20000ms ease-in;
-  transition: transform 20000ms ease-in;
-  transition: transform 20000ms ease-in, -webkit-transform 20000ms ease-in;
 }
 
 .content__todos-delete div {
@@ -155,10 +161,10 @@
   display: none;
   -webkit-transform: translateX(-40px);
           transform: translateX(-40px);
-  -webkit-transition: -webkit-transform 20000ms ease-in;
-  transition: -webkit-transform 20000ms ease-in;
-  transition: transform 20000ms ease-in;
-  transition: transform 20000ms ease-in, -webkit-transform 20000ms ease-in;
+  -webkit-transition: -webkit-transform 100ms ease-in;
+  transition: -webkit-transform 100ms ease-in;
+  transition: transform 100ms ease-in;
+  transition: transform 100ms ease-in, -webkit-transform 100ms ease-in;
 }
 
 html {

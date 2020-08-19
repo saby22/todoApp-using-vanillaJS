@@ -10,6 +10,7 @@ const todo=document.querySelectorAll(".content__todos h3");
 let newTodo;
 let toggleNewTodo=true;
 let numberOfTodos;
+let characterPermit=true;
 
 /*Functions*/
 
@@ -39,7 +40,6 @@ const classExists = (target,className)=>{
 //count the number of Todos
 const countTodo= ()=>{
     numberOfTodos=document.querySelectorAll(".content__todos").length;
-    console.log(numberOfTodos);
 }
 /*---------------------------------------*/
 
@@ -63,11 +63,26 @@ input.addEventListener("blur",()=>{
 });
 
 //Retrieve value when ENTER key is pressed
-input.addEventListener("keydown",event=>{
-    if(event.keyCode===13)
+input.addEventListener("keyup",event=>{
+
+    if(input.value.length>31)
     {
-        nnewTodo=input.value;
+        document.querySelector(".fa-exclamation-triangle").style.opacity='1';
+        characterPermit=false;
+    }
+    else{
+        
+        document.querySelector(".fa-exclamation-triangle").style.opacity='0';
+        characterPermit=true;
+    }
+    if(event.keyCode===13 && characterPermit===true)
+    {
+        newTodo=input.value;
         input.value=null;
+        // if(newTodo!=null)
+        // {
+
+        // }
     }
     
 });
@@ -82,7 +97,7 @@ for(let i=0;i<todoDiv.length;i++)
         
         classAdd(todoDelete[i],"content__todos-delete-mouseIn");
 
-        console.log(`Mouse Entered ${i}`);
+        //console.log(`Mouse Entered ${i}`);
     });
 
     todoDiv[i].addEventListener("mouseleave",()=>{
@@ -91,7 +106,7 @@ for(let i=0;i<todoDiv.length;i++)
         classRemove(todoDelete[i],"content__todos-delete-mouseIn");
 
         classAdd(todoDelete[i],"content__todos-delete-mouseOut");
-        console.log(`Mouse Left ${i}`);
+        //console.log(`Mouse Left ${i}`);
     });
 }
 
@@ -100,10 +115,16 @@ for(let i=0;i<todoDiv.length;i++){
 
     todo[i].addEventListener("click",()=>{
 
-        if(todo[i].style.textDecoration==="line-through")
-        todo[i].style.textDecoration="none";
-        else
-        todo[i].style.textDecoration="line-through";
+        if(todo[i].style.textDecoration==="line-through"){
+            todo[i].style.textDecoration="none";
+            todo[i].style.opacity=1;
+        }
+        
+        else{
+            todo[i].style.textDecoration="line-through";
+            todo[i].style.opacity=0.5;
+        }
+        
         
         //addStyle(todo[i],textDecoration,"line-through");
     });

@@ -1,9 +1,12 @@
+@import 'main';
+
 html{
     box-sizing: border-box;
+    
 }
 
 *,*::before,*:a::after{
-    box-sizing: inherit;
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
@@ -11,4 +14,14 @@ html{
 body{
     margin: 0;
     padding: 0;
+    height: 100vh;
+    background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+    font-family: 'Be Vietnam', sans-serif;
+}
+
+.main-div{
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 4em;
 }

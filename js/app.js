@@ -66,6 +66,20 @@ const colorChange= ()=>{
     }
 }
 
+const onMouseEnter = ()=>{
+    if(classExists(todoDelete[i],"content__todos-delete-mouseOut"))
+        classRemove(todoDelete[i],"content__todos-delete-mouseOut");
+        
+    classAdd(todoDelete[i],"content__todos-delete-mouseIn");
+};
+
+const onMouseLeave = ()=>{
+    if(classExists(todoDelete[i],"content__todos-delete-mouseIn"))
+        classRemove(todoDelete[i],"content__todos-delete-mouseIn");
+
+    classAdd(todoDelete[i],"content__todos-delete-mouseOut");
+};
+
 /*---------------------------------------*/
 
 //Display or hide the Add New Todo
@@ -91,23 +105,20 @@ input.addEventListener("blur",()=>{
 input.addEventListener("keyup",event=>{
 
     //the input string should not exceed 31 characcters
-    if(input.value.length>31)
-    {
+    if(input.value.length>31){
         document.querySelector(".fa-exclamation-triangle").style.opacity='1';
         characterPermit=false;
     }
     else{
-        
         document.querySelector(".fa-exclamation-triangle").style.opacity='0';
         characterPermit=true;
     }
-    if(event.keyCode===13 && characterPermit===true)
-    {
+
+
+    if(event.keyCode===13 && characterPermit===true){
         newTodo=input.value;
         input.value=null;
-        console.log(newTodo);
-        if(newTodo!="")
-        {
+        if(newTodo!=""){
             newTodoElement.innerHTML=`<div class="content__todos">
             <div class="content__todos-delete">
                 <div>
@@ -115,12 +126,35 @@ input.addEventListener("keyup",event=>{
                 </div>
             </div>
             <h3>${newTodo}</h3>
-            </div>`
+            </div>`;
             todoUl.appendChild(newTodoElement.cloneNode(true));
             countTodo();
             
             let newList=document.querySelectorAll("li .content__todos");
+            
+//             const newDiv=document.querySelectorAll(".content__todos");;
 
+//             for(let i=0;i<todoDiv.length;i++)
+//             {
+//                 newDiv[i].addEventListener("mouseenter",()=>{
+
+//         if(classExists(todoDelete[i],"content__todos-delete-mouseOut"))
+//         classRemove(todoDelete[i],"content__todos-delete-mouseOut");
+        
+//         classAdd(todoDelete[i],"content__todos-delete-mouseIn");
+
+//         //console.log(`Mouse Entered ${i}`);
+//     });
+
+//     todoDiv[i].addEventListener("mouseleave",()=>{
+
+//         if(classExists(todoDelete[i],"content__todos-delete-mouseIn"))
+//         classRemove(todoDelete[i],"content__todos-delete-mouseIn");
+
+//         classAdd(todoDelete[i],"content__todos-delete-mouseOut");
+//         //console.log(`Mouse Left ${i}`);
+//     });
+// }
             if(numberOfTodos%2==0)
             classAdd(newList[numberOfTodos-1],"content__todos-bgGray");
             else
@@ -131,55 +165,131 @@ input.addEventListener("keyup",event=>{
 });
 
 //Sliding in and out the delete button
-for(let i=0;i<todoDiv.length;i++)
-{
-    todoDiv[i].addEventListener("mouseenter",()=>{
+// for(let i=0;i<todoDiv.length;i++)
+// {
+//     todoDiv[i].addEventListener("mouseenter",()=>{
 
-        if(classExists(todoDelete[i],"content__todos-delete-mouseOut"))
-        classRemove(todoDelete[i],"content__todos-delete-mouseOut");
+//         if(classExists(todoDelete[i],"content__todos-delete-mouseOut"))
+//         classRemove(todoDelete[i],"content__todos-delete-mouseOut");
         
-        classAdd(todoDelete[i],"content__todos-delete-mouseIn");
+//         classAdd(todoDelete[i],"content__todos-delete-mouseIn");
 
-        //console.log(`Mouse Entered ${i}`);
-    });
+//         //console.log(`Mouse Entered ${i}`);
+//     });
 
-    todoDiv[i].addEventListener("mouseleave",()=>{
+//     todoDiv[i].addEventListener("mouseleave",()=>{
 
-        if(classExists(todoDelete[i],"content__todos-delete-mouseIn"))
-        classRemove(todoDelete[i],"content__todos-delete-mouseIn");
+//         if(classExists(todoDelete[i],"content__todos-delete-mouseIn"))
+//         classRemove(todoDelete[i],"content__todos-delete-mouseIn");
 
-        classAdd(todoDelete[i],"content__todos-delete-mouseOut");
-        //console.log(`Mouse Left ${i}`);
-    });
-}
+//         classAdd(todoDelete[i],"content__todos-delete-mouseOut");
+//         //console.log(`Mouse Left ${i}`);
+//     });
+// }
 
 //Add and remove strikethrough to the clicked todo
-for(let i=0;i<todo.length;i++){
+// for(let i=0;i<todo.length;i++){
 
-    todo[i].addEventListener("click",()=>{
+//     todo[i].addEventListener("click",()=>{
 
-        if(todo[i].style.textDecoration==="line-through"){
-            todo[i].style.textDecoration="none";
-            todo[i].style.opacity=1;
-        }
+//         if(todo[i].style.textDecoration==="line-through"){
+//             todo[i].style.textDecoration="none";
+//             todo[i].style.opacity=1;
+//         }
         
-        else{
-            todo[i].style.textDecoration="line-through";
-            todo[i].style.opacity=0.5;
-        }
-    });
-}
+//         else{
+//             todo[i].style.textDecoration="line-through";
+//             todo[i].style.opacity=0.5;
+//         }
+//     });
+// }
 
 //Deleting todos
-for(let i=0;i<todo.length;i++){
+// for(let i=0;i<todo.length;i++){
 
-    todoDelete[i].addEventListener("click",()=>{
-        console.log("Clicked");
-        //delete the ith li
-        todoUl.removeChild(todoLi[i]);
-        colorChange();
-    });
+//     todoDelete[i].addEventListener("click",()=>{
+//         console.log("Clicked");
+//         //delete the ith li
+//         todoUl.removeChild(todoLi[i]);
+//         colorChange();
+//     });
 
-};
+// };
+
+document.querySelector(".content").addEventListener("click",function(e){
+
+    //console.dir(e.target.closest("h3"));
+
+    //Get the Todo text
+    const todoText=e.target.closest("h3");
+    //Add and remove strikethrough to the clicked todo
+    if(todoText!=null){
+        if(todoText.style.textDecoration==="line-through"){
+            todoText.style.textDecoration="none";
+            todoText.style.opacity=1;
+        }
+        else{
+            todoText.style.textDecoration="line-through";
+            todoText.style.opacity=0.5;
+        }
+    }
+
+    
+    
+
+});
+
+document.querySelector("ul").addEventListener("click",function(e){
+
+    //console.dir(e.target.closest("h3"));
+
+    //Get the Todo text
+    const newLi = e.target.closest(".content__todos-delete");
+    //Add and remove strikethrough to the clicked todo
+    if(newLi!=null){
+
+        // newLi.parentElement.removeChild(newLi);
+        // console.dir(newLi);
+        console.dir(newLi.parentNode.parentNode.parentNode.removeChild(newLi.parentNode.parentNode));
+    }
+
+    colorChange();
+    
+    
+
+});
+
+
+
+document.querySelector(".content").addEventListener("mouseover",function(e){
+
+    //console.dir(e.target.closest("div").children[0]);
+    const divTodo=e.target.closest(".content__todos").children[0];
+    //console.dir(divTodo);
+    
+    if(classExists(divTodo,"content__todos-delete-mouseOut"))
+        classRemove(divTodo,"content__todos-delete-mouseOut");
+
+    classAdd(divTodo,"content__todos-delete-mouseIn");
+
+    
+
+});
+
+document.querySelector(".content").addEventListener("mouseout",function(e){
+
+    //console.dir(e.target.closest("div").children[0]);
+    const divTodo=e.target.closest(".content__todos").children[0];
+    //console.dir(divTodo);
+    
+    if(classExists(divTodo,"content__todos-delete-mouseIn"))
+        classRemove(divTodo,"content__todos-delete-mouseIn");
+
+    classAdd(divTodo,"content__todos-delete-mouseOut");
+
+    
+
+});
+
 
 

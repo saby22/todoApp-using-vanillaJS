@@ -1,7 +1,50 @@
+.mobile-view-message {
+  background-color: white;
+  max-width: 360px;
+  min-width: 360px;
+  margin: 2em auto;
+  border-radius: 8px;
+  height: auto;
+  -webkit-box-shadow: 3px 3px 17px 1px rgba(0, 0, 0, 0.4);
+          box-shadow: 3px 3px 17px 1px rgba(0, 0, 0, 0.4);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.mobile-view-message h2 {
+  font-size: 0.9rem;
+  font-weight: 400;
+  text-align: center;
+  color: #787878;
+  width: 90%;
+  margin: 1em auto;
+}
+
+.mobile-view-message h2 span {
+  color: red;
+}
+
+@media screen and (min-width: 778px) {
+  .mobile-view-message {
+    display: none;
+  }
+}
+
 .content {
   width: 90%;
-  margin: 0 auto 0 auto;
+  margin: 8em auto 2em auto;
   max-width: 360px;
+  min-width: 360px;
+}
+
+@media screen and (max-width: 778px) {
+  .content {
+    margin: 2em auto 0 auto;
+  }
 }
 
 .content__header {
@@ -182,10 +225,10 @@ html {
 body {
   margin: 0;
   padding: 0;
-  height: 100vh;
   background: -webkit-gradient(linear, left top, right top, from(#11998e), to(#38ef7d));
   background: linear-gradient(to right, #11998e, #38ef7d);
   font-family: 'Be Vietnam', sans-serif;
+  background-attachment: fixed;
 }
 
 .main-div {

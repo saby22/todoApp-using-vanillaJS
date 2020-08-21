@@ -1,8 +1,12 @@
+@import 'mixins';
+@import 'mobileMessage';
+
 @import 'main';
+
+
 
 html{
     box-sizing: border-box;
-    
 }
 
 *,*::before,*:a::after{
@@ -14,9 +18,12 @@ html{
 body{
     margin: 0;
     padding: 0;
-    height: 100vh;
+    //height: 100vh;
+    //min-width: 100%;
+    //min-height: 100%;
     background: linear-gradient(to right, #11998e, #38ef7d);
     font-family: 'Be Vietnam', sans-serif;
+    background-attachment: fixed;
 }
 
 .main-div{
